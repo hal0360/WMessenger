@@ -10,10 +10,10 @@ import android.support.v4.content.LocalBroadcastManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.atromoby.collectionview.CollectionView;
-import tw.com.atromoby.collectionview.Item;
+import tw.com.atromoby.widgets.CollectionView;
+import tw.com.atromoby.widgets.Item;
+import tw.com.atromoby.widgets.RootActivity;
 
-import tw.com.atromoby.rootactivity.RootActivity;
 
 public class MainActivity extends RootActivity {
 
@@ -22,17 +22,8 @@ public class MainActivity extends RootActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CollectionView.holders.put(1, RecordView::new);
 
-        List<Item> items = new ArrayList<>();
-        items.add(new Item(1,"blue"));
-        items.add(new Item(1,"red"));
-        items.add(new Item(1,"yellow"));
-
-        CollectionView collectionView = findViewById(R.id.recordCollView);
-        collectionView.init(items);
-
-        SmackService.login(this,"warboss","warhammer");
+       // SmackService.login(this,"warboss","warhammer");
     }
 
     @Override
