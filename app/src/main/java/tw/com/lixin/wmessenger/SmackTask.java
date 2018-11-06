@@ -69,8 +69,9 @@ public class SmackTask extends AsyncTask<String,String,String>
 
     @Override
     protected void onPostExecute(String mss) {
+        if(!mss.equals("ok")){
             cmdStr.exec(mss);
-
+        }
     }
 }
 

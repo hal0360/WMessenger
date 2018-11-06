@@ -5,8 +5,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -15,10 +13,7 @@ import android.util.Log;
 import org.jivesoftware.smack.AbstractXMPPConnection;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.ConnectionListener;
-import org.jivesoftware.smack.StanzaListener;
 import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.filter.StanzaFilter;
-import org.jivesoftware.smack.filter.StanzaTypeFilter;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.roster.PresenceEventListener;
 import org.jivesoftware.smack.roster.Roster;
@@ -37,7 +32,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import tw.com.lixin.wmessenger.interfaces.CmdConnect;
+import tw.com.atromoby.utils.LocalIntent;
+import tw.com.atromoby.utils.LocalReceiver;
+import tw.com.lixin.wmessenger.global.LocalFilter;
 import tw.com.lixin.wmessenger.models.User;
 
 public class SmackService extends Service implements SubscribeListener, ConnectionListener, RosterListener, PresenceEventListener, RosterLoadedListener {
@@ -81,7 +78,10 @@ public class SmackService extends Service implements SubscribeListener, Connecti
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(creationError) return START_NOT_STICKY;
+        if(creationError){
+            LocalReceiver.send(this, new LocalIntent(LocalFilter.LOGIN,"creation error!!"));
+            return START_NOT_STICKY;
+        }
 
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
@@ -100,6 +100,7 @@ public class SmackService extends Service implements SubscribeListener, Connecti
         xMPPconnection.disconnect();
         SmackTask smackTask = new SmackTask(xMPPconnection);
         smackTask.onFail(mss -> {
+            LocalReceiver.send(this, new LocalIntent(LocalFilter.LOGIN,mss));
             Log.e("onFail", mss);
         });
         smackTask.login(user, pass);
@@ -205,6 +206,7 @@ public class SmackService extends Service implements SubscribeListener, Connecti
         roster.addPresenceEventListener(this);
         roster.addSubscribeListener(this);
         roster.addRosterLoadedListener(this);
+        LocalReceiver.send(this, new LocalIntent(LocalFilter.LOGIN,"okay"));
     }
 
     @Override
