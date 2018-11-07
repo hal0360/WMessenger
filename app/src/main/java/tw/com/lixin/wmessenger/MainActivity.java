@@ -10,17 +10,10 @@ import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wmessenger.global.LocalFilter;
 
 
-public class MainActivity extends RootActivity {
+public class MainActivity extends RootActivity{
 
     private CustomInput userInput, passInput;
     private TextView errorTxt;
-    private LocalReceiver localReceiver = new LocalReceiver() {
-        @Override
-        public void onReceive(LocalIntent localIntent) {
-            String noo = localIntent.getObject(String.class);
-            errorTxt.setText(noo);
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,4 +31,11 @@ public class MainActivity extends RootActivity {
         });
     }
 
+    private LocalReceiver localReceiver = new LocalReceiver() {
+        @Override
+        public void onReceive(LocalIntent localIntent) {
+            String noo = localIntent.getObject(String.class);
+            errorTxt.setText(noo);
+        }
+    };
 }

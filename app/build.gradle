@@ -30,6 +30,7 @@ dependencies {
     implementation 'com.github.hal0360.Tools:utils:0.1.1'
     implementation 'org.igniterealtime.smack:smack-android:4.3.0'
     implementation 'org.igniterealtime.smack:smack-tcp:4.3.0'
+    implementation 'org.igniterealtime.smack:smack-experimental:4.3.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

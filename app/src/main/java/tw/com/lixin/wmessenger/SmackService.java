@@ -39,13 +39,17 @@ import tw.com.lixin.wmessenger.models.User;
 
 public class SmackService extends Service implements SubscribeListener, ConnectionListener, RosterListener, PresenceEventListener, RosterLoadedListener {
 
-    private AbstractXMPPConnection xMPPconnection;
+    private static AbstractXMPPConnection xMPPconnection;
     private Roster roster;
     private static String user, pass;
     private Boolean creationError = false;
     private List<User> users;
 
     public SmackService() {
+    }
+
+    public static AbstractXMPPConnection getConnection(){
+        return xMPPconnection;
     }
 
     public static void login(Context context, String username, String password){
@@ -186,6 +190,8 @@ public class SmackService extends Service implements SubscribeListener, Connecti
             Log.e("entry", "Name: "+entry.toString());
 
         }
+
+      //  LocalReceiver.send(this, new LocalIntent(LocalFilter.));
     }
 
     @Override
