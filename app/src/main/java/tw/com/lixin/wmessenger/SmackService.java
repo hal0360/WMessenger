@@ -37,7 +37,7 @@ import tw.com.atromoby.utils.LocalReceiver;
 import tw.com.lixin.wmessenger.global.LocalFilter;
 import tw.com.lixin.wmessenger.models.User;
 
-public class SmackService extends Service implements SubscribeListener, ConnectionListener, RosterListener, PresenceEventListener, RosterLoadedListener {
+public class SmackService extends Service implements ConnectionListener{
 
     private static AbstractXMPPConnection xMPPconnection;
     private Roster roster;
@@ -122,83 +122,6 @@ public class SmackService extends Service implements SubscribeListener, Connecti
         context.stopService(new Intent(context,SmackService.class));
     }
 
-    private void sendMessage() {
-        Intent intent = new Intent("custom-event-name");
-        // You can also include some extra data.
-        intent.putExtra("message", "me gayyy");
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
-    }
-
-    @Override
-    public void presenceAvailable(FullJid address, Presence availablePresence) {
-        Log.e("presenceAvailable", address.toString());
-        sendMessage();
-    }
-
-    @Override
-    public void presenceUnavailable(FullJid address, Presence presence) {
-        Log.e("presenceUnavailable", address.toString());
-    }
-
-    @Override
-    public void presenceError(Jid address, Presence errorPresence) {
-        Log.e("presenceError", address.toString());
-    }
-
-    @Override
-    public void presenceSubscribed(BareJid address, Presence subscribedPresence) {
-        Log.e("presenceSubscribed", address.toString());
-    }
-
-    @Override
-    public void presenceUnsubscribed(BareJid address, Presence unsubscribedPresence) {
-        Log.e("presenceUnsubscribed", address.toString());
-    }
-
-    @Override
-    public void entriesAdded(Collection<Jid> addresses) {
-        Log.e("entriesAdded", addresses.toString());
-    }
-
-    @Override
-    public void entriesUpdated(Collection<Jid> addresses) {
-        Log.e("entriesUpdated", addresses.toString());
-    }
-
-    @Override
-    public void entriesDeleted(Collection<Jid> addresses) {
-        Log.e("entriesDeleted", addresses.toString());
-    }
-
-    @Override
-    public void presenceChanged(Presence presence) {
-        Log.e("presenceChanged", presence.toString());
-    }
-
-    @Override
-    public SubscribeAnswer processSubscribe(Jid from, Presence subscribeRequest) {
-        return null;
-    }
-
-    @Override
-    public void onRosterLoaded(Roster roster) {
-
-        Set<RosterEntry> entries = roster.getEntries();
-        Log.e("onRosterLoaded", "sdssa");
-        for (RosterEntry entry : entries) {
-
-            Log.e("entry", "Name: "+entry.toString());
-
-        }
-
-      //  LocalReceiver.send(this, new LocalIntent(LocalFilter.));
-    }
-
-    @Override
-    public void onRosterLoadingFailed(Exception exception) {
-        Log.e("onRosterLoadingFailed", exception.getMessage());
-    }
-
     @Override
     public void connected(XMPPConnection connection) {
         Log.e("XMPPConnection", "connected");
@@ -206,12 +129,6 @@ public class SmackService extends Service implements SubscribeListener, Connecti
 
     @Override
     public void authenticated(XMPPConnection connection, boolean resumed) {
-        roster = Roster.getInstanceFor(xMPPconnection);
-        roster.setSubscriptionMode(Roster.SubscriptionMode.manual);
-        roster.addRosterListener(this);
-        roster.addPresenceEventListener(this);
-        roster.addSubscribeListener(this);
-        roster.addRosterLoadedListener(this);
         LocalReceiver.send(this, new LocalIntent(LocalFilter.LOGIN,"okay"));
     }
 

@@ -2,10 +2,12 @@ package tw.com.lixin.wmessenger;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.roster.PresenceEventListener;
 import org.jivesoftware.smack.roster.Roster;
+import org.jivesoftware.smack.roster.RosterEntry;
 import org.jivesoftware.smack.roster.RosterListener;
 import org.jivesoftware.smack.roster.RosterLoadedListener;
 import org.jivesoftware.smack.roster.SubscribeListener;
@@ -14,6 +16,7 @@ import org.jxmpp.jid.FullJid;
 import org.jxmpp.jid.Jid;
 
 import java.util.Collection;
+import java.util.Set;
 
 import tw.com.atromoby.widgets.RootActivity;
 
@@ -36,7 +39,13 @@ public class FriendActivity extends RootActivity implements RosterLoadedListener
 
     @Override
     public void onRosterLoaded(Roster roster) {
+        Set<RosterEntry> entries = roster.getEntries();
+        Log.e("onRosterLoaded", "sdssa");
+        for (RosterEntry entry : entries) {
 
+            Log.e("entry", "Name: "+entry.toString());
+
+        }
     }
 
     @Override
