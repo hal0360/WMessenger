@@ -18,11 +18,13 @@ import org.jxmpp.jid.Jid;
 import java.util.Collection;
 import java.util.Set;
 
+import tw.com.atromoby.widgets.ItemsView;
 import tw.com.atromoby.widgets.RootActivity;
 
 public class FriendActivity extends RootActivity implements RosterLoadedListener, SubscribeListener, RosterListener, PresenceEventListener {
 
     private Roster roster;
+    private ItemsView itemsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,9 @@ public class FriendActivity extends RootActivity implements RosterLoadedListener
         roster.addPresenceEventListener(this);
         roster.addSubscribeListener(this);
         roster.addRosterLoadedListener(this);
+
+        itemsView = findViewById(R.id.itemsView);
+
     }
 
     @Override
@@ -42,8 +47,6 @@ public class FriendActivity extends RootActivity implements RosterLoadedListener
         Set<RosterEntry> entries = roster.getEntries();
         Log.e("onRosterLoaded", "sdssa");
         for (RosterEntry entry : entries) {
-
-            Log.e("entry", "Name: "+entry.toString());
 
         }
     }

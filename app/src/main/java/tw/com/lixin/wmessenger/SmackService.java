@@ -106,6 +106,8 @@ public class SmackService extends Service implements ConnectionListener{
         smackTask.onFail(mss -> {
             LocalReceiver.send(this, new LocalIntent(LocalFilter.LOGIN,mss));
             Log.e("onFail", mss);
+            creationError = true;
+            stopSelf();
         });
         smackTask.login(user, pass);
 

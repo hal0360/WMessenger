@@ -3,25 +3,27 @@ package tw.com.lixin.wmessenger.viewHolders;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import tw.com.atromoby.widgets.CollectionView;
-import tw.com.atromoby.widgets.Item;
+
 import tw.com.atromoby.widgets.ItemHolder;
 import tw.com.lixin.wmessenger.R;
 
 public class FriendHolder extends ItemHolder {
 
-    TextView name;
-    ImageView avatar;
+    private TextView name;
+    private ImageView avatar;
+    private String userID;
 
-    public FriendHolder(CollectionView cv) {
-        super(cv, R.layout.friend_card);
-        name = findView(R.id.userID);
-        avatar = findView(R.id.avatar);
+    public FriendHolder(String uid) {
+        super(R.layout.friend_card);
+        userID = uid;
     }
 
     @Override
-    public void init(Item item) {
-
+    public void init() {
+        name = findView(R.id.userID);
+        name.setText(userID);
+        avatar = findView(R.id.avatar);
+        clicked(avatar, v->alert("nigga"));
     }
 
     @Override

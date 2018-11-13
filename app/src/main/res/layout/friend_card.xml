@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="65dp"
@@ -23,8 +22,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:clipToOutline="true"
-        tools:srcCompat="@tools:sample/avatars[2]" />
+        android:scaleType="fitXY"
+        android:src="@drawable/hamster" />
 
     <TextView
         android:id="@+id/userID"

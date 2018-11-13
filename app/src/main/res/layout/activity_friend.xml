@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".FriendActivity">
 
+    <tw.com.atromoby.widgets.ItemsView
+        android:id="@+id/itemsView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </android.support.constraint.ConstraintLayout>
