@@ -19,7 +19,7 @@ public class FriendHolder extends ItemHolder {
     }
 
     @Override
-    public void init() {
+    public void onBind() {
         name = findView(R.id.userID);
         name.setText(userID);
         avatar = findView(R.id.avatar);
@@ -27,7 +27,7 @@ public class FriendHolder extends ItemHolder {
     }
 
     @Override
-    public void cleanUp() {
+    public void onClean() {
 
     }
 }
