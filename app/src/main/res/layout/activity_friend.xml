@@ -37,11 +37,51 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:orientation="horizontal"
+        android:weightSum="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/friendIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/hamster"
+            android:contentDescription="@string/app_name"  />
+
+        <ImageButton
+            android:id="@+id/chatIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/hamster"
+            android:contentDescription="@string/app_name"  />
+
+        <ImageButton
+            android:id="@+id/gameIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/hamster"
+            android:contentDescription="@string/app_name"  />
+
+        <ImageButton
+            android:id="@+id/settingIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/hamster"
+            android:contentDescription="@string/app_name"  />
+
+
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

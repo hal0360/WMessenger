@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,8 +29,12 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".FriendActivity" />
-        <activity android:name=".ChatActivity"></activity>
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".FriendActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".ChatActivity"/>
     </application>
 
 </manifest>

@@ -23,7 +23,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="fitXY"
-        android:src="@drawable/hamster" />
+        android:src="@drawable/hamster"
+        android:contentDescription="@string/app_name" />
 
     <TextView
         android:id="@+id/userID"

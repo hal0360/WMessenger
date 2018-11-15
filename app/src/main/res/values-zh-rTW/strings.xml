@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">左派</string>
     <string name="firend_title">白人</string>
+    <string name="wait_message">真月…</string>
+    <string name="login_button">世界</string>
+    <string name="user_hint">大盛:</string>
+    <string name="pass_hint">古泉:</string>
 </resources>

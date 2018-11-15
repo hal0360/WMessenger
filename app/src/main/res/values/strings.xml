@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">WMessenger</string>
     <string name="firend_title">Friends</string>
+    <string name="wait_message">Wait for login…</string>
+    <string name="login_button">Login</string>
+    <string name="user_hint">Username:</string>
+    <string name="pass_hint">Password:</string>
 </resources>

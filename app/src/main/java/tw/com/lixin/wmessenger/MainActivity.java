@@ -1,7 +1,10 @@
 package tw.com.lixin.wmessenger;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 import tw.com.atromoby.utils.LocalIntent;
 import tw.com.atromoby.utils.LocalReceiver;
@@ -19,6 +22,14 @@ public class MainActivity extends RootActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*
+        Locale locale =  Locale.TAIWAN;
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());*/
+
         setContentView(R.layout.activity_main);
 
         userInput = findViewById(R.id.userInput);
@@ -27,7 +38,7 @@ public class MainActivity extends RootActivity{
         localReceiver.registerReceiver(this,LocalFilter.LOGIN);
 
         clicked(R.id.loginButton, view -> {
-            errorTxt.setText("Wait for login...");
+            errorTxt.setText("dfa");
             SmackService.login(this, userInput.getRawText(),passInput.getRawText());
         });
     }
